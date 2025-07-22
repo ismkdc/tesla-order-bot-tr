@@ -11,7 +11,14 @@ WebSocket üzerinden stok bilgisi geldiğinde:
 - Ardından `payment.js` dosyası ile **ödeme işlemi** gerçekleştirilir,
 - Böylece alım işlemi tamamlanmış olur.
 
----
+### Ek Bileşenler
+
+Bu projeye aşağıdaki yardımcı Python bileşenleri eklenmiştir:
+
+- `scraper.py`: Tesla'nın stok bilgilerini düzenli olarak tarar ve günceller.
+- `wsserver.py`: WebSocket sunucusudur, gerçek zamanlı stok verisini istemcilere iletir.
+- `httpserver.py`: `order.js` ve `payment.js` gibi istemci tarafı dosyaları sunmak için basit bir HTTP sunucusu sağlar.
+- `date_time_fix.py`: Zaman farkı ve senkronizasyon sorunlarını düzeltmek için kullanılır (özellikle zaman hassasiyetli rezervasyon işlemleri için).
 
 > 📢 **BU BOT EĞİTİM AMAÇLIDIR. BUNUNLA SİPARİŞ VEREMEZSİNİZ. SADECE MANTIĞINI ANLAMANIZ İÇİN PAYLAŞTIM!**
 
@@ -20,7 +27,7 @@ WebSocket üzerinden stok bilgisi geldiğinde:
 ## Description (English)
 
 This bot runs in the **Chrome developer console**.  
-The `order.js` script connects to the backend **WebSocket** and listens for **stock updates**.
+The `order.js` script connects to the backend **WebSocket** server and listens for **stock updates**.
 
 When a stock update is received:
 - It bypasses protections like `hCaptcha` and `Akamai`,
@@ -28,8 +35,13 @@ When a stock update is received:
 - Then uses `payment.js` to **process the payment**,
 - Thus completing the purchase.
 
----
+### Additional Components
+
+The following helper Python components are included in this project:
+
+- `scraper.py`: Scrapes Tesla's stock information periodically and keeps it updated.
+- `wsserver.py`: A WebSocket server that delivers real-time stock updates to clients.
+- `httpserver.py`: A basic HTTP server that serves client-side scripts like `order.js` and `payment.js`.
+- `date_time_fix.py`: Handles time synchronization and fixes timing issues (important for accurate reservations).
 
 > 📢 **THIS BOT IS FOR EDUCATIONAL PURPOSES ONLY. YOU CANNOT PLACE ORDERS WITH IT. IT IS SHARED JUST TO HELP YOU UNDERSTAND THE LOGIC!**
-
----
