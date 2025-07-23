@@ -17,7 +17,7 @@ Bu projeye aşağıdaki yardımcı Python bileşenleri eklenmiştir:
 
 - `scraper.py`: Tesla'nın stok bilgilerini düzenli olarak tarar ve günceller.
 - `wsserver.py`: WebSocket sunucusudur, gerçek zamanlı stok verisini istemcilere iletir.
-- `httpserver.py`: `order.js` ve `payment.js` gibi istemci tarafı dosyaları sunmak için basit bir HTTP sunucusu sağlar.
+- `httpserver.py`: `date_time_fix` dosyasını sunmak için basit bir HTTP sunucusu sağlar.
 
 > 📢 **BU BOT EĞİTİM AMAÇLIDIR. BUNUNLA SİPARİŞ VEREMEZSİNİZ. SADECE MANTIĞINI ANLAMANIZ İÇİN PAYLAŞTIM!**
 
@@ -40,6 +40,6 @@ The following helper Python components are included in this project:
 
 - `scraper.py`: Scrapes Tesla's stock information periodically and keeps it updated.
 - `wsserver.py`: A WebSocket server that delivers real-time stock updates to clients.
-- `httpserver.py`: A basic HTTP server that serves client-side scripts like `order.js` and `payment.js`.
+- `httpserver.py`: A basic HTTP server that serves the `date_time_fix` client-side script.
 
 > 📢 **THIS BOT IS FOR EDUCATIONAL PURPOSES ONLY. YOU CANNOT PLACE ORDERS WITH IT. IT IS SHARED JUST TO HELP YOU UNDERSTAND THE LOGIC!**
