@@ -1,13 +1,13 @@
 const socketUrl = "ws://localhost:8000";
-const email = "example@gmail.com";
-const phoneNumber = "1111111111";
-const firstName = "ismail";
-const lastName = "kundakcı";
-const tckn = "145314531453";
-const street = "korucu";
-const city = "ivrindi";
-const stateProvince = "balikesir";
-const zipCode = "10775";
+const email = "dalgaliomerfaruk2@gmail.com";
+const phoneNumber = "5525519284";
+const firstName = "ömer faruk";
+const lastName = "dalğali";
+const tckn = "44351070138";
+const street = "kemer";
+const city = "esenler";
+const stateProvince = "istanbul";
+const zipCode = "34230";
 
 (function () {
     const originalFetch = window.fetch;
