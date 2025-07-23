@@ -8,9 +8,9 @@ from websocket import create_connection
 ws = create_connection("ws://localhost:8000")
 ws.send("scrapper started (IPv4 mode, exact only)")
 
-# Sabit bilgiler
+# scrape do hesabı açıp kendi tokeninizi koyun
 scrape_do_token = "55708a8059a14c959c1d7f66bc8e18f18eebc73ac36"
-raw_url = "https://www.tesla.com/inventory/api/v4/inventory-results?query=%7B%22query%22%3A%7B%22model%22%3A%22my%22%2C%22condition%22%3A%22new%22%2C%22options%22%3A%7B%7D%2C%22arrangeby%22%3A%22Price%22%2C%22order%22%3A%22asc%22%2C%22market%22%3A%22NL%22%2C%22language%22%3A%22nl%22%2C%22super_region%22%3A%22north%20america%22%7D%2C%22offset%22%3A0%2C%22count%22%3A24%2C%22outsideOffset%22%3A0%2C%22outsideSearch%22%3Afalse%2C%22isFalconDeliverySelectionEnabled%22%3Atrue%2C%22version%22%3A%22v2%22%7D"
+raw_url = "https://www.tesla.com/coinorder/api/v4/inventory-results?query=%7B%22query%22%3A%7B%22model%22%3A%22my%22%2C%22condition%22%3A%22new%22%2C%22options%22%3A%7B%7D%2C%22arrangeby%22%3A%22Price%22%2C%22order%22%3A%22asc%22%2C%22market%22%3A%22TR%22%2C%22language%22%3A%22tr%22%2C%22super_region%22%3A%22north%20america%22%2C%22lng%22%3A28.9948%2C%22lat%22%3A41.0214%2C%22zip%22%3A%22%22%2C%22range%22%3A0%7D%2C%22offset%22%3A0%2C%22count%22%3A24%2C%22outsideOffset%22%3A0%2C%22outsideSearch%22%3Afalse%2C%22isFalconDeliverySelectionEnabled%22%3Atrue%2C%22version%22%3A%22v2%22%7D"
 encoded_url = urllib.parse.quote(raw_url, safe="")
 scrape_url = f"https://api.scrape.do?token={scrape_do_token}&url={encoded_url}&super=true"
 
