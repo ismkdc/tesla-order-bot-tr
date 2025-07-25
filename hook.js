@@ -9,10 +9,10 @@ const city = "ivrindi";
 const stateProvince = "balikesir";
 const zipCode = "10775";
 
-(function () {
+(function() {
     const originalFetch = window.fetch;
 
-    window.fetch = async function (input, init = {}) {
+    window.fetch = async function(input, init = {}) {
         // Body varsa ve stringse kontrol et
         if (init.body && typeof init.body === "string" && init.body.includes("harmanboran@gmail.com")) {
             console.log("[fetch intercept] Email değiştirildi");
@@ -58,8 +58,8 @@ const zipCode = "10775";
             console.log("[fetch intercept] ZipCode değiştirildi");
             init.body = init.body.replaceAll("34890", zipCode);
         }
-		
-		if (typeof input === "string" && input === "https://jis-3c9e59e9.berkant.dev/date_time_fix") {
+
+        if (typeof input === "string" && input === "https://jis-3c9e59e9.berkant.dev/date_time_fix") {
             console.log("[fetch intercept] URL değiştirildi");
             input = "http://localhost:8181/date_time_fix";
         }
