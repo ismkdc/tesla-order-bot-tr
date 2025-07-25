@@ -1,23 +1,33 @@
 # Tesla Türkiye Otomatik Sipariş Botu (Eğitim Amaçlı)
 
+> **Not:** Yeni ve geliştirilmiş yöntem olarak `order_new.js` kullanılması tavsiye edilmektedir.  
+> Bu sayede `httpserver` ve `date_time_fix` dosyalarına gerek kalmamaktadır.
+
+---
+
 ## Açıklama (Türkçe)
 
 Bu bot, **Chrome geliştirici konsolunda** çalışmaktadır.  
-`order.js` dosyası, arka plandaki **WebSocket** sunucusuna bağlanarak **stok güncellemelerini** dinler.
+`order_new.js` dosyası, arka plandaki **WebSocket** sunucusuna bağlanarak **stok güncellemelerini** dinler.
 
-WebSocket üzerinden stok bilgisi geldiğinde:
-- `hCaptcha`, `Akamai` gibi engelleri aşar,
-- Otomatik olarak **rezervasyon** oluşturur,
-- Ardından `payment.js` dosyası ile **ödeme işlemi** gerçekleştirilir,
+Öne çıkan değişiklikler ve özellikler:  
+- Renk filtresi **tamamen kaldırıldı**, böylece tüm renklerdeki araçlar işleniyor.  
+- **Hook** kullanmaya gerek kalmadan, `userData` değişkenini doğrudan kendi kişisel bilgilerinizle düzenleyebilirsiniz.  
+- `httpserver` ve `date_time_fix` dosyalarına artık ihtiyaç yoktur.  
+
+WebSocket üzerinden stok bilgisi geldiğinde:  
+- `hCaptcha`, `Akamai` gibi engeller aşılır,  
+- Otomatik olarak **rezervasyon** oluşturulur,  
+- Ardından `payment.js` dosyası ile **ödeme işlemi** gerçekleştirilir,  
 - Böylece alım işlemi tamamlanmış olur.
 
 ### Ek Bileşenler
 
 Bu projeye aşağıdaki yardımcı Python bileşenleri eklenmiştir:
 
-- `scraper.py`: Tesla'nın stok bilgilerini düzenli olarak tarar ve günceller.
-- `wsserver.py`: WebSocket sunucusudur, gerçek zamanlı stok verisini istemcilere iletir.
-- `httpserver.py`: `date_time_fix` dosyasını sunmak için basit bir HTTP sunucusu sağlar.
+- `scraper.py`: Tesla'nın stok bilgilerini düzenli olarak tarar ve günceller.  
+- `wsserver.py`: WebSocket sunucusudur, gerçek zamanlı stok verisini istemcilere iletir.  
+- `httpserver.py`: (Eskiden `date_time_fix` dosyasını sunmak için kullanılırdı, artık gerekli değildir.)
 
 > 📢 **BU BOT EĞİTİM AMAÇLIDIR. BUNUNLA SİPARİŞ VEREMEZSİNİZ. SADECE MANTIĞINI ANLAMANIZ İÇİN PAYLAŞTIM!**
 
@@ -26,20 +36,31 @@ Bu projeye aşağıdaki yardımcı Python bileşenleri eklenmiştir:
 ## Description (English)
 
 This bot runs in the **Chrome developer console**.  
-The `order.js` script connects to the backend **WebSocket** server and listens for **stock updates**.
+The `order_new.js` script connects to the backend **WebSocket** server and listens for **stock updates**.
 
-When a stock update is received:
-- It bypasses protections like `hCaptcha` and `Akamai`,
-- Automatically creates a **reservation**,
-- Then uses `payment.js` to **process the payment**,
+Key changes and features:  
+- The color filter has been **completely removed**, so vehicles in all colors are processed.  
+- You can edit the `userData` variable directly with your own personal information **without needing any hooks**.  
+- There is no longer a need for `httpserver` or `date_time_fix` files.
+
+When a stock update is received:  
+- It bypasses protections like `hCaptcha` and `Akamai`,  
+- Automatically creates a **reservation**,  
+- Then uses `payment.js` to **process the payment**,  
 - Thus completing the purchase.
 
 ### Additional Components
 
 The following helper Python components are included in this project:
 
-- `scraper.py`: Scrapes Tesla's stock information periodically and keeps it updated.
-- `wsserver.py`: A WebSocket server that delivers real-time stock updates to clients.
-- `httpserver.py`: A basic HTTP server that serves the `date_time_fix` client-side script.
+- `scraper.py`: Scrapes Tesla's stock information periodically and keeps it updated.  
+- `wsserver.py`: A WebSocket server that delivers real-time stock updates to clients.  
+- `httpserver.py`: (Used previously to serve the `date_time_fix` script, now obsolete.)
 
 > 📢 **THIS BOT IS FOR EDUCATIONAL PURPOSES ONLY. YOU CANNOT PLACE ORDERS WITH IT. IT IS SHARED JUST TO HELP YOU UNDERSTAND THE LOGIC!**
+
+---
+
+### Teşekkürler
+
+thx for @erknkaya for deobfuscation
