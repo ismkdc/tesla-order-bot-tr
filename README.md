@@ -6,7 +6,6 @@ Bu bot, **Chrome geliştirici konsolunda** çalışmaktadır.
 `order_new.js` dosyası, arka plandaki **WebSocket** sunucusuna bağlanarak **stok güncellemelerini** dinler.
 
 Öne çıkan değişiklikler ve özellikler:  
-- Renk filtresi **tamamen kaldırıldı**, böylece tüm renklerdeki araçlar işleniyor.  
 - **Hook** kullanmaya gerek kalmadan, `userData` değişkenini doğrudan kendi kişisel bilgilerinizle düzenleyebilirsiniz.  
 - `httpserver` ve `date_time_fix` dosyalarına artık ihtiyaç yoktur.  
 
@@ -34,7 +33,6 @@ This bot runs in the **Chrome developer console**.
 The `order_new.js` script connects to the backend **WebSocket** server and listens for **stock updates**.
 
 Key changes and features:  
-- The color filter has been **completely removed**, so vehicles in all colors are processed.  
 - You can edit the `userData` variable directly with your own personal information **without needing any hooks**.  
 - There is no longer a need for `httpserver` or `date_time_fix` files.
 
