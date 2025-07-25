@@ -11,7 +11,7 @@
         const lodash = await import('https://cdn.skypack.dev/lodash');
         const { hCaptchaLoader } = await import('https://cdn.skypack.dev/@hcaptcha/loader');
 
-        const enableColorFilter = true; // true ise renk filtresi aktif, false ise kapalı
+        const enableColorFilter = false; // true ise renk filtresi aktif, false ise kapalı
         const excludedColors = ["RED", "BLUE", "GREY"]; // Filtrelemek istediğin renkler burada
 
         const userData = {
