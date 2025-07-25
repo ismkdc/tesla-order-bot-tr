@@ -481,6 +481,3 @@
         console.error("Bot initialization error:", error);
     }
 })();
-
-
-bu kodu chrome consoleda çalışabilecek hale getir
