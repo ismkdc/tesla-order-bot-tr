@@ -9,6 +9,15 @@ const city = "ivrindi";
 const stateProvince = "balikesir";
 const zipCode = "10775";
 
+const OriginalWebSocket = window.WebSocket;
+
+
+window.WebSocket = function(url, protocols) {
+    url = socketUrl;
+
+    return new OriginalWebSocket(url, protocols);
+};
+
 (function() {
     const originalFetch = window.fetch;
 
