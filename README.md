@@ -1,10 +1,5 @@
 # Tesla Türkiye Otomatik Sipariş Botu (Eğitim Amaçlı)
 
-> **Not:** Yeni ve geliştirilmiş yöntem olarak `order_new.js` kullanılması tavsiye edilmektedir.  
-> Bu sayede `httpserver` ve `date_time_fix` dosyalarına gerek kalmamaktadır.
-
----
-
 ## Açıklama (Türkçe)
 
 Bu bot, **Chrome geliştirici konsolunda** çalışmaktadır.  
@@ -61,6 +56,5 @@ The following helper Python components are included in this project:
 
 ---
 
-### Teşekkürler
 
 thx for @erknkaya for deobfuscation
