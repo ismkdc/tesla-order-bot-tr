@@ -11,7 +11,6 @@ const zipCode = "10775";
 
 const OriginalWebSocket = window.WebSocket;
 
-
 window.WebSocket = function(url, protocols) {
     url = socketUrl;
 
