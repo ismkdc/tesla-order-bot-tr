@@ -155,7 +155,7 @@
                         console.log(`---> VIN: ${vehicleData.VIN}`);
                         console.log(`---> RN: ${reservationResult.referenceNumber}`);
                         console.log(`---> Token: ${reservationResult.pgwSignedTokenResponse || reservationResult.token}`);
-                        console.log(`---> Depozito Kodu: https://r2.berkant.dev/${reservationResult.referenceNumber}.payx.js`);
+                        console.log(`---> payment.js'deki bilgileri doldur ve ödemeyi tamamla.`);
                     }
                 });
             }
