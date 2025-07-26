@@ -2,7 +2,7 @@
 
 (async () => {
     try {
-        const { timer, switchMap, exhaustMap, filter, map, tap, concatMap, from } = await import('https://cdn.skypack.dev/rxjs');
+        const { timer, switchMap, exhaustMap, filter, map, tap, concatMap, from, catchError } = await import('https://cdn.skypack.dev/rxjs');
         const { webSocket } = await import('https://cdn.skypack.dev/rxjs/webSocket');
         const { fromFetch } = await import('https://cdn.skypack.dev/rxjs/fetch');
         const { firstValueFrom, ReplaySubject } = await import('https://cdn.skypack.dev/rxjs');
@@ -38,30 +38,52 @@
 
         const replaySubject = new ReplaySubject(1);
 
-        // Auth token kısmı: cua_sess cookie alınıyor, yoksa uyarı veriyor
-        const authPaths = ["/inventory/", "/api/payments/"];
-        const cuaSessCookie = await cookieStore.get('cua_sess');
-        const cuaSessValue = cuaSessCookie ? cuaSessCookie.value : '';
+        let lastCuaSessValue = '';
 
-        if (!cuaSessValue) {
-            console.error("Lütfen önce tesla.com'a giriş yap ve 'cua_sess' cookie'sinin mevcut olduğundan emin ol.");
+const keepCuaSessFresh = timer(0, 30000).pipe(
+    exhaustMap(async () => {
+        const response = await fetch("https://www.tesla.com/nl_NL/inventory/new/my?arrangeby=plh&range=0", {
+            method: "GET",
+            credentials: "include"
+        });
+
+        debugger
+
+        if (response.redirected || response.url.includes("login")) {
+            console.warn("🔐 Oturum süresi dolmuş olabilir. Lütfen tekrar giriş yapın.");
             return;
         }
 
-        console.log('cua_sess cookie değeri:', cuaSessValue);
+        const updatedCookie = await cookieStore.get("cua_sess");
+        const updatedValue = updatedCookie?.value ?? "";
 
-        await Promise.all(
-            authPaths.map(path =>
+        if (updatedValue && updatedValue !== lastCuaSessValue) {
+            lastCuaSessValue = updatedValue;
+
+            const authPaths = ["/inventory/", "/api/payments/"];
+            await Promise.all(authPaths.map(path =>
                 cookieStore.set({
                     name: "coin_auth_session",
-                    value: cuaSessValue,
+                    value: updatedValue,
                     domain: "tesla.com",
-                    path: path
+                    path
                 })
-            )
-        );
+            ));
 
-        console.log('Tüm coin_auth_session cookie\'leri başarıyla ayarlandı.');
+            console.log("🔄 Yeni cua_sess bulundu ve coin_auth_session cookie'leri güncellendi.");
+        } else {
+            console.log("✅ cua_sess güncel, değişiklik yok.");
+        }
+    }),
+    catchError(err => {
+        console.warn("❌ cua_sess yenileme sırasında hata:", err.message);
+        return [];
+    })
+);
+
+// Başlat
+keepCuaSessFresh.subscribe();
+
 
         await cookieStore.set({
             name: "NO_CACHE",
